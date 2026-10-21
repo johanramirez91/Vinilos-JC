@@ -1,0 +1,10 @@
+[
+  { "nombre": "Abbey Road", "autor": "The Beatles", "genero": "rock", "precio": 185000, "cantidadDisponible": 5 },
+  { "nombre": "The Dark Side of the Moon", "autor": "Pink Floyd", "genero": "rock", "precio": 195000, "cantidadDisponible": 3 },
+  { "nombre": "Thriller", "autor": "Michael Jackson", "genero": "pop", "precio": 170000, "cantidadDisponible": 6 },
+  { "nombre": "Kind of Blue", "autor": "Miles Davis", "genero": "jazz", "precio": 160000, "cantidadDisponible": 2 },
+  { "nombre": "Siembra", "autor": "Willie Colón y Rubén Blades", "genero": "salsa", "precio": 150000, "cantidadDisponible": 4 },
+  { "nombre": "Illmatic", "autor": "Nas", "genero": "hiphop", "precio": 175000, "cantidadDisponible": 0 },
+  { "nombre": "Random Access Memories", "autor": "Daft Punk", "genero": "electronica", "precio": 210000, "cantidadDisponible": 7 },
+  { "nombre": "Rumours", "autor": "Fleetwood Mac", "genero": "rock", "precio": 165000, "cantidadDisponible": 1 }
+]

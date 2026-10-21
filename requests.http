@@ -1,0 +1,66 @@
+### Extensión necesaria en VS Code: "REST Client". Haz clic en "Send Request" sobre cada bloque.
+@baseUrl = http://localhost:3000/api/vinilos
+
+### 0) ¿Está vivo el servidor?
+GET http://localhost:3000/
+
+### 1) CREAR un vinilo (CREATE)
+# @name crear
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "nombre": "Discovery",
+  "autor": "Daft Punk",
+  "genero": "electronica",
+  "precio": 180000,
+  "cantidadDisponible": 4
+}
+
+###
+@idCreado = {{crear.response.body._id}}
+
+### 2) LISTAR todos (READ)
+GET {{baseUrl}}
+
+### 3) OBTENER uno por id (READ)
+GET {{baseUrl}}/{{idCreado}}
+
+### 4) ACTUALIZAR: solo el precio y la cantidad (UPDATE)
+PUT {{baseUrl}}/{{idCreado}}
+Content-Type: application/json
+
+{
+  "precio": 150000,
+  "cantidadDisponible": 10
+}
+
+### 5) ELIMINAR (DELETE)
+DELETE {{baseUrl}}/{{idCreado}}
+
+
+########## ERRORES A PROPÓSITO (el anti-fallos en acción) ##########
+
+### E1) Faltan campos obligatorios → 400
+POST {{baseUrl}}
+Content-Type: application/json
+
+{ "nombre": "Disco sin autor" }
+
+### E2) Género que no existe → 400
+POST {{baseUrl}}
+Content-Type: application/json
+
+{ "nombre": "Disco raro", "autor": "Alguien", "genero": "reggaeton", "precio": 100000 }
+
+### E3) Precio negativo → 400
+POST {{baseUrl}}
+Content-Type: application/json
+
+{ "nombre": "Disco gratis", "autor": "Alguien", "genero": "pop", "precio": -50 }
+
+### E4) Id con formato inválido → 400
+GET {{baseUrl}}/abc
+
+### E5) Id con formato correcto pero que no existe → 404
+GET {{baseUrl}}/64b000000000000000000000
