@@ -1,9 +1,13 @@
 // src/app.js — la aplicación Express
 import express from 'express';
+import cors from 'cors';
 import vinilosRouter from './routes/vinilos.js';
 
 const app = express();
 
+// Permite que el frontend (otro dominio/puerto) consuma la API.
+// CORS_ORIGIN limita quién puede llamarla (separa varios con comas); si no existe, se permite cualquiera.
+app.use(cors({ origin: process.env.CORS_ORIGIN?.split(',') ?? '*' }));
 app.use(express.json()); // permite leer el JSON que llega en req.body
 
 app.get('/', (req, res) => res.json({ mensaje: 'Tienda de vinilos 🎵' }));
